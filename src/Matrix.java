@@ -61,15 +61,24 @@ public class Matrix {
 
 
 
-    @Override
+  
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (int i=0; i<rows;i++){
-            for(int j=0; j<cols; j++){
-                sb.append("a" + i + "," + j + " = " + matriz[i][j] + " ");
+        sb.append("[");  // Inicia o formato da matriz
+    
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                sb.append(matriz[i][j]);
+                if (j < cols - 1) {
+                    sb.append(", ");  // Adiciona uma vírgula e espaço entre os elementos da linha
+                }
             }
-            sb.append("\n");
+            if (i < rows - 1) {
+                sb.append(",\n");  // Adiciona uma vírgula e uma nova linha após cada linha da matriz
+            }
         }
+    
+        sb.append("]");  // Fecha o formato da matriz
         return sb.toString();
     }
 

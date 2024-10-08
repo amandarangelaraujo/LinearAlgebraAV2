@@ -164,7 +164,24 @@ public class LinearAlgebra {
         System.out.println("Z0: "+z0);
         
     }
-     
+    
+    //multipicar uma matriz por um vetor
+    public static Vector MatrixDotVector(Matrix matrix, Vector vetor){
+        vetor = LinearAlgebra.transpose(vetor);
+        if(matrix.getCols()!=vetor.getRows()){
+            throw new IllegalArgumentException("Número de colunas da matriz deve ser igual ao número de linhas do vetor.");
+        }
+        Vector vetorN = new Vector(vetor.getRows(), vetor.getColumns());
+        for (int linha=0; linha<matrix.getRows(); linha++){
+            float valorM = 0;
+            for (int coluna=0; coluna<vetor.getRows(); coluna++){
+                valorM += matrix.get(linha, coluna) * vetor.get(coluna); 
+            }
+            vetorN.set(linha, valorM);
+        }
+        
+        return vetorN;
+    }
     
 
 

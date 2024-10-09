@@ -146,6 +146,78 @@ public class LinearTranformation {
     }
 
     //projeção
+    public static Vector projection2dx(Vector vetor){
+        if(vetor.getColumns() != 2){
+            throw new IllegalArgumentException("O vetor deve ser bidimensional.");
+        }
+        Vector transformed = new Vector(2);
+        transformed.set(0, vetor.get(0));
+        transformed.set(1, 0);
+
+        return transformed;
+
+    }
+
+    public static Vector projection2dy(Vector vetor){
+        if(vetor.getColumns() != 2){
+            throw new IllegalArgumentException("O vetor deve ser bidimensional.");
+        }
+
+        Vector transformed = new Vector(2);
+        transformed.set(0, 0);
+        transformed.set(1, vetor.get(1));
+
+        return transformed;
+    }
+
+    public static Vector projection3dx(Vector vetor){
+        if(vetor.getColumns() != 3){
+            throw new IllegalArgumentException("O vetor deve ser bidimensional.");
+        }
+        Vector transformed = new Vector (3);
+        transformed.set(0, vetor.get(0));
+        transformed.set(1, 0);
+        transformed.set(2, 0);
+
+        return transformed;
+    }
+
+    public static Vector projection3dy(Vector vetor){
+        if(vetor.getColumns() != 3){
+            throw new IllegalArgumentException("O vetor deve ser bidimensional.");
+        }
+
+        Vector transformed = new Vector(3);
+        transformed.set(0, 0);
+        transformed.set(1, vetor.get(1));
+        transformed.set(2, 0);
+        return transformed;
+
+    }
+
+    public static Vector projection3dz(Vector vetor){
+        if(vetor.getColumns() != 3){
+            throw new IllegalArgumentException("O vetor deve ser bidimensional.");
+        }
+
+        Vector transformed = new Vector(3);
+        transformed.set(0, 0);
+        transformed.set(1, 0);
+        transformed.set(2, vetor.get(2));
+        return transformed;
+
+    }
+
+    public static Vector cisalhamento2D(Vector vetor, float kx, float ky){
+        if(vetor.getColumns() != 2){
+            throw new IllegalArgumentException("O vetor deve ser bidimensional.");
+        }
+        Vector cisalhado = new Vector(2);
+        cisalhado.set(0, vetor.get(0) + kx*vetor.get(1));
+        cisalhado.set(1, vetor.get(1) + ky*vetor.get(0));
+
+        return cisalhado;
+    }
 
 
 }

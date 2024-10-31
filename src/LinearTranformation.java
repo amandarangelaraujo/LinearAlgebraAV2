@@ -36,14 +36,15 @@ public class LinearTranformation {
         if(vetor.getColumns() != 2){
             throw new IllegalArgumentException("O vetor deve ser bidimensional.");
         }
-        angle = (float) Math.toRadians(angle);
+        
+        float radiano = (float) Math.toRadians(angle);
         Matrix rotationMatrix = new Matrix(2, 2);
-        rotationMatrix.set(0,0,(float) Math.round(Math.cos(angle)));
-        rotationMatrix.set(0,1,(float) Math.round(-Math.sin(angle)));
-        rotationMatrix.set(1,0,(float) Math.round(Math.sin(angle)));
-        rotationMatrix.set(1,1,(float) Math.round(Math.cos(angle)));
+        rotationMatrix.set(0, 0, (float)Math.cos(radiano));
+        rotationMatrix.set(0, 1, (float)-Math.sin(radiano));
+        rotationMatrix.set(1, 0, (float)Math.sin(radiano));
+        rotationMatrix.set(1, 1, (float)Math.cos(radiano));
 
-       return LinearAlgebra.MatrixDotVector(rotationMatrix, vetor);
+        return LinearAlgebra.MatrixDotVector(rotationMatrix, vetor);
 
     }
 
@@ -52,11 +53,11 @@ public class LinearTranformation {
         if(vetor.getColumns() != 3){
             throw new IllegalArgumentException("O vetor deve ser tridimensional.");
         }
-        angle = (float) Math.toRadians(angle);
+        float radiano = (float) Math.toRadians(angle);
         Vector transformed = new Vector(3);
         transformed.set(0, vetor.get(0));
-        transformed.set(1, (float)Math.round((vetor.get(1)*Math.cos(angle) - vetor.get(2)*Math.sin(angle))));
-        transformed.set(2, (float)Math.round((vetor.get(1)*Math.sin(angle) + vetor.get(2)*Math.cos(angle))));
+        transformed.set(1, (float)(vetor.get(1)*Math.cos(radiano) - vetor.get(2)*Math.sin(radiano)));
+        transformed.set(2, (float)(vetor.get(1)*Math.sin(radiano) + vetor.get(2)*Math.cos(radiano)));
 
         return transformed;
     }
@@ -67,9 +68,9 @@ public class LinearTranformation {
         }
         angle = (float) Math.toRadians(angle);
         Vector transformed = new Vector(3);
-        transformed.set(0, (float)Math.round((vetor.get(0)*Math.cos(angle) + vetor.get(2)*Math.sin(angle))));
+        transformed.set(0, (float)(vetor.get(0)*Math.cos(angle) + vetor.get(2)*Math.sin(angle)));
         transformed.set(1, vetor.get(1));
-        transformed.set(2, (float)Math.round((-vetor.get(0)*Math.sin(angle) + vetor.get(2)*Math.cos(angle))));
+        transformed.set(2, (float)(-vetor.get(0)*Math.sin(angle) + vetor.get(2)*Math.cos(angle)));
 
         return transformed;
     }
@@ -79,8 +80,8 @@ public class LinearTranformation {
         }
         angle = (float) Math.toRadians(angle);
         Vector transformed = new Vector(3);
-        transformed.set(0, (float)Math.round((vetor.get(0)*Math.cos(angle) - vetor.get(1)*Math.sin(angle))));
-        transformed.set(1, (float)Math.round((vetor.get(0)*Math.sin(angle) + vetor.get(1)*Math.cos(angle))));
+        transformed.set(0, (float)(vetor.get(0)*Math.cos(angle) - vetor.get(1)*Math.sin(angle)));
+        transformed.set(1, (float)(vetor.get(0)*Math.sin(angle) + vetor.get(1)*Math.cos(angle)));
         transformed.set(2, vetor.get(2));
 
         return transformed;

@@ -129,7 +129,7 @@ public class LinearAlgebra {
 
 
     
-
+    
     public static void solve(Matrix matriz){
         
         float a00 = matriz.get(0,0);
